@@ -1,0 +1,34 @@
+---
+- name: show some filters
+  hosts: linux_systems[0]
+  vars:
+    test_list:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 5
+      - 2
+
+  tasks:
+    - name: show a to_json filter
+      debug: msg="to_json filter {{group_specific_var|to_json}}"
+
+    - name: show a to_yaml filter
+      debug: msg="to_yaml filter {{group_specific_var|to_yaml}}"
+
+    - name: defaulting undefined variables
+      debug: msg="defaulting undefined variables - {{non_existant|default(5)}}"
+
+    - name: list filter min
+      debug: msg="list filter min - {{test_list|min}}"
+
+    - name: list filter max
+      debug: msg="list filter max - {{test_list|max}}"
+
+    - name: list filter unique
+      debug: msg="list filter unique - {{test_list|unique}}"
+
+    - name: list filter shuffle
+      debug: msg="list filter shuffle - {{test_list|shuffle}}"

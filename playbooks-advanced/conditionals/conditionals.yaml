@@ -1,0 +1,21 @@
+---
+- name: Conditional Example
+  hosts: linux_systems
+  tasks:
+    - name: Run a shell command only for debian systems
+      shell: echo "only on Debian Family systems"
+      when: ansible_os_family == "Debian"
+
+    - name: Run a shell command only for redhatsystems
+      shell: echo "only on Red Hat Family systems"
+      when: ansible_os_family == "RedHat"
+
+    - name: Run a shell command only for CentOS 6 or Debian 7
+      shell: echo "only on CentOS 6 or Debian 7 systems"
+      when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6") or
+            (ansible_distribution == "Debian" and ansible_distribution_major_version == "7")
+
+    - name: Run a loop conditional
+      command: echo {{ item }}
+      with_items: [ 0, 2, 4, 6, 8, 10 ]
+      when: item > 5

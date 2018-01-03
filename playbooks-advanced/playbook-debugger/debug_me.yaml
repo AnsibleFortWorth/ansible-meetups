@@ -1,0 +1,12 @@
+---
+- name: Demonstrate debugging a playbook
+  hosts: localhost
+  strategy: debug
+  gather_facts: no
+  vars:
+    var1: value1
+  tasks:
+    - name: correct variable
+      ping: data={{ var1 }}
+    - name: wrong variable
+      ping: data={{ wrong_var }}

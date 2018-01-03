@@ -1,0 +1,37 @@
+---
+- name: show some lookups
+  hosts: linux_systems[0]
+  vars:
+    myfile: myfile.txt
+
+  tasks:
+
+     - debug: msg="{{ lookup('env','HOME') }} is an environment variable"
+
+     - name: lines will iterate over each line from stdout of a command
+       debug: msg="{{ item }} is a line from the result of this command"
+       with_lines: cat /etc/motd
+
+     - debug: msg="{{ lookup('pipe','date') }} is the raw result of running this command"
+
+     - name: Quote variables with_lines also as it executes shell
+       debug: msg="{{ item }} is a line from myfile"
+       with_lines: "cat {{myfile|quote}}"
+
+     - debug: msg="{{ lookup('template', './some_template.j2') }} is a value from evaluation of this template"
+
+     # Since 2.4, you can pass in variables during evaluation
+     - debug: msg="{{ lookup('template', './some_template.j2', template_vars=dict(group_specific_var="from_playbook")) }}"
+
+     # The following lookups were added in 1.9
+     # url lookup splits lines by default, an option to disable this was added in 2.4
+     - debug: msg="{{item}}"
+       with_url:
+          - 'https://github.com/maxamillion.keys'
+
+     # outputs the cartesian product of the supplied lists
+     - debug: msg="{{item}}"
+       with_cartesian:
+            - [1,2,3,4,5,6]
+            - [2,3,4,5,6,7]
+            - [3,4,5,6,7,8]

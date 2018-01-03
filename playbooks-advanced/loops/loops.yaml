@@ -1,0 +1,35 @@
+---
+- name: Loops Example
+  hosts: localhost
+  vars:
+    alpha: [ 'a', 'b', 'c', 'd' ]
+    numbers:  [ 1, 2, 3, 4 ]
+
+  tasks:
+    - name: perform an action with several items
+      debug: var="{{ item }}"
+      with_items:
+         - testuser1
+         - testuser2
+
+    - name: perform an action with subkeys
+      debug: msg="{{ item.name }} - {{ item.groups }}"
+      with_items:
+        - { name: 'testuser1', groups: 'wheel' }
+        - { name: 'testuser2', groups: 'root' }
+
+    - name: Show me all files in tmp
+      debug: msg="file - {{item}}"
+      with_fileglob:
+         - "/tmp/*"
+
+    - name: Loop over parallel data sets
+      debug: msg="{{ item.0 }} and {{ item.1 }}"
+      with_together:
+        - "{{ alpha }}"
+        - "{{ numbers }}"
+
+
+
+
+

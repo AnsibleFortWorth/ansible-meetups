@@ -1,0 +1,10 @@
+# NOTE: This should be included as per Loops and Includes, item comes from an
+#       external context
+- debug:
+    msg: "playbook item={{ item }} - included item={{ included_item }}"
+  with_items:
+    - a
+    - b
+    - c
+  loop_control:
+    loop_var: included_item

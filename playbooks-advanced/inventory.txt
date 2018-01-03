@@ -1,0 +1,23 @@
+[all_systems:children]
+linux_systems
+bsd_systems
+
+[all_systems:vars]
+all_systems_groupvar="all systems stuff"
+
+[linux_systems]
+linuxsys[1:3]
+
+[linux_systems:vars]
+ansible_connection=local
+ansible_python_interpreter=/usr/bin/python3
+linux_systems_groupvar="linux systems stuff"
+group_specific_var="linux specific"
+
+[bsd_systems]
+bsdsys[1:3] ansible_connection=local ansible_python_interpreter=/usr/bin/python2
+
+[bsd_systems:vars]
+bsd_systems_groupvar="bsd systems stuff"
+group_specific_var="bsd specific"
+

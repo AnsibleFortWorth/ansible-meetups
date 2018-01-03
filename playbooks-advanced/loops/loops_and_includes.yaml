@@ -1,0 +1,9 @@
+---
+- name: Loops and Includes!
+  hosts: localhost
+  tasks:
+    - include_tasks: include_me.yaml
+      with_items:
+        - 1
+        - 2
+        - 3
