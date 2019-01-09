@@ -25,7 +25,7 @@ File.open(ARGV[0]) do |fh|
 
    result = {
       'msg' => "Hello #{name}",
-      'changed' => False
+      'changed' => false
    }
 
    print JSON.dump(result)
