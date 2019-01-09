@@ -9,6 +9,9 @@
     - hello_want_json:
         name: "Ansible Fort Worth Meetup"
 
+    - hello_binary_json:
+        name: "Ansible Fort Worth Meetup"
+
     - hello_new_style:
         name: "Ansible Fort Worth Meetup"
 
