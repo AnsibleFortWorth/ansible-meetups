@@ -1,0 +1,14 @@
+---
+- name: Test custmo modules
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - hello_old_style:
+        name: "Ansible Forth Worth Meetup"
+
+    - hello_want_json:
+        name: "Ansible Fort Worth Meetup"
+
+    - hello_new_style:
+        name: "Ansible Fort Worth Meetup"
+
