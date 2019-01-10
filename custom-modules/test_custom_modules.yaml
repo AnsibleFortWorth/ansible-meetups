@@ -3,15 +3,18 @@
   hosts: localhost
   gather_facts: False
   tasks:
-    - hello_old_style:
-        name: "Ansible Forth Worth Meetup"
+    - name: hello_old_style (now a file operation)
+      hello_old_style:
+        some_file: "/tmp/foobar"
 
-    - hello_want_json:
+    - name: hello_want_json
+      hello_want_json:
         name: "Ansible Fort Worth Meetup"
 
-    - hello_binary_json:
+    - name: hello_binary
+      hello_binary:
         name: "Ansible Fort Worth Meetup"
 
-    - hello_new_style:
+    - name: hello_new_style
+      hello_new_style:
         name: "Ansible Fort Worth Meetup"
-

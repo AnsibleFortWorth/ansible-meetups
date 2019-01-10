@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright: (c) 2013, Adam Miller <maxamillion@fedoraproject.org>
+# Copyright: (c) 2018, Adam Miller <maxamillion@fedoraproject.org>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -28,7 +28,8 @@ author: "Adam Miller (@maxamillion)"
 '''
 
 EXAMPLES = r'''
-- hello_new_style:
+- name: use hello_new_style
+  hello_new_style:
     name: "Ansible Fort Worth Meetup"
 '''
 
@@ -42,6 +43,11 @@ def main():
             name=dict(type='str'),
         ),
         supports_check_mode=False
+    )
+
+    module.exit_json(
+        msg="Hello {0}!".format(module.params['name']),
+        changed=False
     )
 
 
