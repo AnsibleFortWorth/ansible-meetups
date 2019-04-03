@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: import the cowsay role
+      import_role:
+        name: cowsay
