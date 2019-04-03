@@ -7,6 +7,14 @@ writing our own.
 In this directory you will find various examples that are used to demonstrate
 the use and authorship of dynamic inventories.
 
+Why dynamic inventories?
+------------------------
+
+Static inventory files are simple and easy to use and may fit your use case just
+fine but if your infrastructure is very large or fluctuates often because of the
+use of ephemeral technologies like Infrastructure as a Service, then maintaining
+static inventory files can become combersome.
+
 Quite Note
 ----------
 
@@ -31,14 +39,6 @@ A note about Ansible dynamic inventories, there are technically two types:
      Plugin called ``script``
    * All available inventory scripts are available here:
      https://github.com/ansible/ansible/tree/devel/contrib/inventory
-
-Why dynamic inventories?
-------------------------
-
-Static inventory files are simple and easy to use and may fit your use case just
-fine but if your infrastructure is very large or fluctuates often because of the
-use of ephemeral technologies like Infrastructure as a Service, then maintaining
-static inventory files can become combersome.
 
 Mixing Inventories
 ------------------
